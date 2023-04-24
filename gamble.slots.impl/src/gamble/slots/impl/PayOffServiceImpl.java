@@ -1,5 +1,7 @@
 package gamble.slots.impl;
 
+import gamble.slots.spi.PayOffService;
+
 // This class implements the PayOffService
 public class PayOffServiceImpl implements PayOffService {
 
