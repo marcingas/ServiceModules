@@ -1,2 +1,3 @@
-module $MODULE_NAME$ {
+module gamble.slots.spi {
+    exports gamble.slots.spi;
 }
