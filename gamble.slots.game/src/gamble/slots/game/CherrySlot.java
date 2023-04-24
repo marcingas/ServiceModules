@@ -2,10 +2,7 @@ package gamble.slots.game;
 
 import gamble.slots.spi.PayOffService;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.ServiceLoader;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CherrySlot {
@@ -29,7 +26,7 @@ public class CherrySlot {
     // Method that plays the game and provides winnings
     private void playGame() {
 
-        PayOffService p = getPreferredService();
+        PayOffService p = getServiceInMayWays(0);
         if (p == null) System.out.println("Provider not found");
         else {
             System.out.println("Congratulations:  You're a winner!");
@@ -60,5 +57,46 @@ public class CherrySlot {
         } else return service.get();
     }
 
+    private PayOffService getServiceInMayWays(int whichWay) {
+        System.out.println("WhichWay= " + whichWay);
+
+        ServiceLoader<PayOffService> loader = ServiceLoader.load(PayOffService.class);
+        System.out.println("result of load method " + loader.getClass());
+        PayOffService payOffService = null;
+
+        switch (whichWay) {
+            case(0):
+                payOffService = loader.stream()
+                        .map(ServiceLoader.Provider::get)
+                        .filter(s->s.getClass().getName().startsWith("gamble"))
+                        .findFirst()
+                        .get();
+                break;
+            case(1):
+                payOffService = loader.stream()
+                        .filter(s -> s.get().getClass().getName().startsWith("gamble"))
+                        .findFirst()
+                        .get()
+                        .get();
+                break;
+            case (2):
+                Iterator<PayOffService> iterator = loader.iterator();
+                while (iterator.hasNext()) {
+                    PayOffService iteratorItem = iterator.next();
+                    System.out.println(iteratorItem.getClass());
+                    if (iteratorItem.getClass().getName().startsWith("nj")) {
+                        payOffService = iteratorItem;
+                    }
+                }
+                break;
+            case (3):
+                payOffService = ServiceLoader.load(PayOffService.class)
+                        .findFirst()
+                        .get();
+                break;
+        }
+        return payOffService;
+
+    }
 }
 
