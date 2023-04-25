@@ -7,6 +7,9 @@
       <module fileurl="file://$PROJECT_DIR$/gamble.slots.impl/gamble.slots.impl.iml" filepath="$PROJECT_DIR$/gamble.slots.impl/gamble.slots.impl.iml" />
       <module fileurl="file://$PROJECT_DIR$/gamble.slots.spi/gamble.slots.spi.iml" filepath="$PROJECT_DIR$/gamble.slots.spi/gamble.slots.spi.iml" />
       <module fileurl="file://$PROJECT_DIR$/njvirtual.slots.impl/njvirtual.slots.impl.iml" filepath="$PROJECT_DIR$/njvirtual.slots.impl/njvirtual.slots.impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test.consumer/test.consumer.iml" filepath="$PROJECT_DIR$/test.consumer/test.consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test.impl/test.impl.iml" filepath="$PROJECT_DIR$/test.impl/test.impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test.spi/test.spi.iml" filepath="$PROJECT_DIR$/test.spi/test.spi.iml" />
     </modules>
   </component>
 </project>
